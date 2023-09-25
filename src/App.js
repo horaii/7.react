@@ -7,14 +7,16 @@ import { useState } from "react";
 
 
 function App() {
-	const [Degree, setDegree] = useState(0)
+		const [Colors, setColors] = useState(['red', 'blue', 'green'])
+
+		let newColors = [...Colors]
+		newColors[0] = 'hotpink'
 	return (
 	<>
-			<article style={{transform: `rotate(${Degree}deg)`}}>
-				<p style={{margin : '0, auto'}}>{Degree}</p>
-			</article>
-			<button onClick={()=> setDegree(Degree-45)}>왼쪽으로 이동</button>
-			<button onClick={()=> setDegree(Degree+45)}>오른쪽으로 이동</button>
+		{Colors.map((color, idx) => (
+			<button style={{backgroundColor: color}} key={idx}> {color}</button>
+		))}
+		<button onClick={() =>setColors(newColors)}>색상변경</button>
 	</>
 	);
 }
