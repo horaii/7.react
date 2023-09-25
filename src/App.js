@@ -3,39 +3,19 @@ import Header from "./components/Header.jsx";
 import List from "./components/List.jsx";
 import Popup from "./components/Popup.jsx";
 import './style.scss';
+import { useState } from "react";
 
 
 function App() {
-	let student = {
-		name: "David",
-		age: 20
-	}
-	let newStudent = {...student}
-	newStudent.name = 'Andy'
-	console.log(newStudent)
-	console.log(student)
-	
-	// let arr = ['reading' , 'game', 'cook']
-	// let newArr = [...arr]
-	// newArr[0] = 'exercise'
-	// console.log(newArr)
-	// console.log(arr)
 
-	// let abc = 'hello'
-	// let bbc = abc
-	// bbc = 'world'
-	// console.log(bbc)
-	// console.log(abc)
-
+	console.log('app')
+	let [Name, setName] = useState('David')
+	console.log(setName)
 	
-	let isPop = true 
-	let isFooter = false
 	return (
 	<>
-		<Header />
-		{isFooter && <Footer />}
-		{isPop ?<Popup />: null}
-		<List />
+		<h1>{Name}</h1>
+		<button onClick={()=>setName('Andy')}>이름변경</button>
 	</>
 	);
 }
