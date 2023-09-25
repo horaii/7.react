@@ -7,15 +7,14 @@ import { useState } from "react";
 
 
 function App() {
-
-	console.log('app')
-	let [Name, setName] = useState('David')
-	console.log(setName)
-	
+	const [Degree, setDegree] = useState(0)
 	return (
 	<>
-		<h1>{Name}</h1>
-		<button onClick={()=>setName('Andy')}>이름변경</button>
+			<article style={{transform: `rotate(${Degree}deg)`}}>
+				<p style={{margin : '0, auto'}}>{Degree}</p>
+			</article>
+			<button onClick={()=> setDegree(Degree-45)}>왼쪽으로 이동</button>
+			<button onClick={()=> setDegree(Degree+45)}>오른쪽으로 이동</button>
 	</>
 	);
 }
