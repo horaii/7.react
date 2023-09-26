@@ -1,24 +1,33 @@
-// import { TRUE } from "sass";
-// import Footer from "./components/Footer.jsx";
-// import Header from "./components/Header.jsx";
-// import List from "./components/List.jsx";
-import Popup from "./components/Popup.jsx";
+
 import './style.scss';
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 function App() {
-		const [Pop, setPop] = useState(false)
+	console.log('re-render')
+	let Num = useRef(0)
+	let Box =  useRef(null)
+	console.log("Num")
+
+	const prev =()=>{
+		Box.current.style.transform = `rotate(${--Num.current*45}deg)`
+
+	}
+	const next = ()=>{
+		Box.current.style.transform = `rotate(${++Num.current*45}deg)`
+
+	}
+	// const [Num, setNum] = useState(0)
 	return (
 	<>
-		<button onClick={()=>setPop(true)}>
-			팝업열기
-		</button>
-		<button onClick={()=>setPop(false)}>
-			팝업닫기
-		</button>
+		<button onClick={
+			prev
+		}>prev</button>
+		<button onClick={
+			next
+		}>next</button>
 
-		{Pop ? <Popup /> : null}
+		<article ref={Box}></article>
 	</>
 	);
 }
