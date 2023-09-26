@@ -1,22 +1,24 @@
-import Footer from "./components/Footer.jsx";
-import Header from "./components/Header.jsx";
-import List from "./components/List.jsx";
+// import { TRUE } from "sass";
+// import Footer from "./components/Footer.jsx";
+// import Header from "./components/Header.jsx";
+// import List from "./components/List.jsx";
 import Popup from "./components/Popup.jsx";
 import './style.scss';
 import { useState } from "react";
 
 
 function App() {
-		const [Colors, setColors] = useState(['red', 'blue', 'green'])
-
-		let newColors = [...Colors]
-		newColors[0] = 'hotpink'
+		const [Pop, setPop] = useState(false)
 	return (
 	<>
-		{Colors.map((color, idx) => (
-			<button style={{backgroundColor: color}} key={idx}> {color}</button>
-		))}
-		<button onClick={() =>setColors(newColors)}>색상변경</button>
+		<button onClick={()=>setPop(true)}>
+			팝업열기
+		</button>
+		<button onClick={()=>setPop(false)}>
+			팝업닫기
+		</button>
+
+		{Pop ? <Popup /> : null}
 	</>
 	);
 }
